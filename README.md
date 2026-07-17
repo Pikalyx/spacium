@@ -15,8 +15,8 @@
   </a>
 </p>
 
-This custom **Bazzite** image is based on `bazzite-gnome` and
-`bazzite-gnome-nvidia-open`. It includes **Dank Material Shell** and **niri**
+This custom **Bazzite** image is based on `bazzite-gnome`,
+`bazzite-gnome-nvidia-open`, and `bazzite-gnome-nvidia`. It includes **Dank Material Shell** and **niri**
 along with all of the recommended extras for Dank Linux.
 
 My goal with this image is to offer a vanilla DMS/niri experience with gaming
