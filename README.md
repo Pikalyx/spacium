@@ -27,15 +27,23 @@ Feel free to suggest additional software - or just fork this repo and do
 whatever you like.
 
 To switch, run one of the following commands from a terminal in any Universal
-Blue or Fedora Atomic based install. The first is based on `bazzite-gnome`:
+Blue or Fedora Atomic based install. 
+
+The first is based on `bazzite-gnome`:
 
 ```
 sudo bootc switch ghcr.io/irunatbullets/spacium
 ```
-And this image is based on `bazzite-gnome-nvidia-open`:
+This image is based on `bazzite-gnome-nvidia-open`:
 
 ```
 sudo bootc switch ghcr.io/irunatbullets/spacium-nvidia
+```
+
+And, finally, based on `bazzite-gnome-nvidia`:
+
+```
+sudo bootc switch ghcr.io/irunatbullets/spacium-nouveau
 ```
 
 **Important Note:** After switching to this image the login will backup any
