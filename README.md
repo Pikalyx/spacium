@@ -15,8 +15,9 @@
   </a>
 </p>
 
-This custom **Bazzite** image is based on `bazzite-gnome`,
-`bazzite-gnome-nvidia-open`, and `bazzite-gnome-nvidia`. It includes **Dank Material Shell** and **niri**
+This custom **Bazzite** image is based on `bazzite-gnome` with variants for the Nvidia open driver as well as Nouveau.
+
+It includes **Dank Material Shell** and **niri**
 along with all of the recommended extras for Dank Linux.
 
 My goal with this image is to offer a vanilla DMS/niri experience with gaming
@@ -29,18 +30,15 @@ whatever you like.
 To switch, run one of the following commands from a terminal in any Universal
 Blue or Fedora Atomic based install. 
 
-The first is based on `bazzite-gnome`:
+Choose from the following based on your gpu needs (amd, nvidia, or legacy nvidia):
 
 ```
 sudo bootc switch ghcr.io/irunatbullets/spacium
 ```
-This image is based on `bazzite-gnome-nvidia-open`:
 
 ```
 sudo bootc switch ghcr.io/irunatbullets/spacium-nvidia
 ```
-
-And, finally, based on `bazzite-gnome-nvidia`:
 
 ```
 sudo bootc switch ghcr.io/irunatbullets/spacium-nouveau
