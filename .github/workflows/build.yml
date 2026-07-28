@@ -73,11 +73,8 @@ jobs:
              [ "$NOUVEAU" != "$OLD_NOUVEAU" ]; then
               echo "changed=true" >> "$GITHUB_OUTPUT"
 
-              cat > .github/bazzite-digests <<EOF
-standard=$STANDARD
-nvidia=$NVIDIA
-nouveau=$NOUVEAU
-EOF
+            printf "standard=%s\nnvidia=%s\nnouveau=%s\n" \
+              "$STANDARD" "$NVIDIA" "$NOUVEAU" > .github/bazzite-digests
 
           else
               echo "changed=false" >> "$GITHUB_OUTPUT"
