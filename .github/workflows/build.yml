@@ -9,7 +9,7 @@ on:
       - "assets/**"
 
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '05 10 * * *'
 
   push:
     branches: [main]
@@ -37,7 +37,7 @@ jobs:
 
   check_base_images:
     name: Check Bazzite base images
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
 
     permissions:
