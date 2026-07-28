@@ -19,6 +19,12 @@ on:
       - ".github/bazzite-digests"
 
   workflow_dispatch:
+    inputs:
+      force:
+        description: "Force rebuild"
+        required: false
+        default: false
+        type: boolean
 
 env:
   IMAGE_DESC: "My customized Universal Blue Image mashup featuring Bazzite, DMS, and niri"
@@ -41,10 +47,13 @@ jobs:
     runs-on: ubuntu-24.04
 
     permissions:
-      contents: write
+      contents: read
 
     outputs:
       changed: ${{ steps.check.outputs.changed }}
+      standard: ${{ steps.check.outputs.standard }}
+      nvidia: ${{ steps.check.outputs.nvidia }}
+      nouveau: ${{ steps.check.outputs.nouveau }}
 
     steps:
       - name: Checkout
@@ -72,24 +81,13 @@ jobs:
              [ "$NVIDIA" != "$OLD_NVIDIA" ] || \
              [ "$NOUVEAU" != "$OLD_NOUVEAU" ]; then
               echo "changed=true" >> "$GITHUB_OUTPUT"
-
-            printf "standard=%s\nnvidia=%s\nnouveau=%s\n" \
-              "$STANDARD" "$NVIDIA" "$NOUVEAU" > .github/bazzite-digests
-
           else
               echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Commit updated digests
-        if: steps.check.outputs.changed == 'true'
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-          git add .github/bazzite-digests
-          git commit -m "Update Bazzite base image digests"
-          git push
-
+          echo "standard=$STANDARD" >> "$GITHUB_OUTPUT"
+          echo "nvidia=$NVIDIA" >> "$GITHUB_OUTPUT"
+          echo "nouveau=$NOUVEAU" >> "$GITHUB_OUTPUT"
 
   build_push:
     name: Build and push image
@@ -97,8 +95,12 @@ jobs:
     needs: check_base_images
 
     if: |
-      github.event_name != 'schedule' ||
-      needs.check_base_images.outputs.changed == 'true'
+      always() &&
+      (
+        github.event_name != 'schedule' ||
+        needs.check_base_images.outputs.changed == 'true' ||
+        github.event.inputs.force == 'true'
+      )
 
     runs-on: ubuntu-24.04
 
@@ -210,4 +212,39 @@ jobs:
           IMAGE_NAME: ${{ env.IMAGE_NAME }}
           VARIANT: ${{ matrix.variant && format('-{0}', matrix.variant) || '' }}
           DIGEST: ${{ steps.push.outputs.digest }}
+
+  update_bazzite_digests:
+    name: Update Bazzite digest state
+    needs:
+      - check_base_images
+      - build_push
+
+    if: |
+      always() &&
+      needs.build_push.result == 'success' &&
+      needs.check_base_images.outputs.changed == 'true'
+
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Save new digests
+        run: |
+          printf "standard=%s\nnvidia=%s\nnouveau=%s\n" \
+            "${{ needs.check_base_images.outputs.standard }}" \
+            "${{ needs.check_base_images.outputs.nvidia }}" \
+            "${{ needs.check_base_images.outputs.nouveau }}" \
+            > .github/bazzite-digests
+
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          git add .github/bazzite-digests
+          git commit -m "Update Bazzite base image digests"
+          git push
 
