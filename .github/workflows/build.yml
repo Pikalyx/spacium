@@ -159,7 +159,7 @@ jobs:
 
       - name: Build Image
         id: build
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v3
         with:
           containerfiles: ./Containerfile
           image: ${{ env.IMAGE_NAME }}${{ matrix.variant && format('-{0}', matrix.variant) || '' }}
