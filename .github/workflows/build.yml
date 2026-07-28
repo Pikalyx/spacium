@@ -16,6 +16,7 @@ on:
     paths-ignore:
       - "**/README.md"
       - "assets/**"
+      - ".github/bazzite-digests"
 
   workflow_dispatch:
 
@@ -31,9 +32,77 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+
 jobs:
+
+  check_base_images:
+    name: Check Bazzite base images
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: write
+
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install skopeo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y skopeo jq
+
+      - name: Check digests
+        id: check
+        run: |
+          mkdir -p .github
+
+          STANDARD=$(skopeo inspect docker://ghcr.io/ublue-os/bazzite-gnome:stable | jq -r .Digest)
+          NVIDIA=$(skopeo inspect docker://ghcr.io/ublue-os/bazzite-gnome-nvidia-open:stable | jq -r .Digest)
+          NOUVEAU=$(skopeo inspect docker://ghcr.io/ublue-os/bazzite-gnome-nvidia:stable | jq -r .Digest)
+
+          OLD_STANDARD=$(grep '^standard=' .github/bazzite-digests | cut -d= -f2)
+          OLD_NVIDIA=$(grep '^nvidia=' .github/bazzite-digests | cut -d= -f2)
+          OLD_NOUVEAU=$(grep '^nouveau=' .github/bazzite-digests | cut -d= -f2)
+
+          if [ "$STANDARD" != "$OLD_STANDARD" ] || \
+             [ "$NVIDIA" != "$OLD_NVIDIA" ] || \
+             [ "$NOUVEAU" != "$OLD_NOUVEAU" ]; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+
+              cat > .github/bazzite-digests <<EOF
+standard=$STANDARD
+nvidia=$NVIDIA
+nouveau=$NOUVEAU
+EOF
+
+          else
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit updated digests
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+          git add .github/bazzite-digests
+          git commit -m "Update Bazzite base image digests"
+          git push
+
+
   build_push:
     name: Build and push image
+
+    needs: check_base_images
+
+    if: |
+      github.event_name != 'schedule' ||
+      needs.check_base_images.outputs.changed == 'true'
+
     runs-on: ubuntu-24.04
 
     strategy:
@@ -57,7 +126,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
 
       - name: Prepare environment
         run: |
