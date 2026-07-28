@@ -9,7 +9,7 @@ on:
       - "assets/**"
 
   schedule:
-    - cron: '05 10 * * *'
+    - cron: '*/5 * * * *'
 
   push:
     branches: [main]
