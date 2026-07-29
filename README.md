@@ -7,8 +7,8 @@
 # Spacium
 
 <p>
-  <a href="https://github.com/irunatbullets/spacium/actions/workflows/build.yml">
-    <img src="https://github.com/irunatbullets/spacium/actions/workflows/build.yml/badge.svg" alt="Build">
+  <a href="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml">
+    <img src="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml/badge.svg" alt="Update image">
   </a>
   <a href="https://github.com/irunatbullets/spacium">
     <img src="https://img.shields.io/github/last-commit/irunatbullets/spacium" alt="Last Commit">
