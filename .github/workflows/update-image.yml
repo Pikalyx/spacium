@@ -7,6 +7,8 @@ on:
     paths-ignore:
       - "**/README.md"
       - "assets/**"
+      - ".github/bazzite-digests"
+      - ".github/workflows/**"
 
   schedule:
     - cron: '05 10 * * *'
@@ -17,6 +19,7 @@ on:
       - "**/README.md"
       - "assets/**"
       - ".github/bazzite-digests"
+      - ".github/workflows/**"
 
   workflow_dispatch:
     inputs:
