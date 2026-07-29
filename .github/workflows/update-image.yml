@@ -1,5 +1,5 @@
 ---
-name: Build image
+name: Update image
 
 on:
   pull_request:
@@ -42,7 +42,7 @@ concurrency:
 jobs:
 
   check_base_images:
-    name: Check Bazzite base images
+    name: Check for new base images
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
 
@@ -214,7 +214,7 @@ jobs:
           DIGEST: ${{ steps.push.outputs.digest }}
 
   update_bazzite_digests:
-    name: Update Bazzite digest state
+    name: Update base image digests
     needs:
       - check_base_images
       - build_push
