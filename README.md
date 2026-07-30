@@ -7,12 +7,7 @@
 # Spacium
 
 <p>
-  <a href="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml">
-    <img src="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml/badge.svg" alt="Update image">
-  </a>
-  <a href="https://github.com/irunatbullets/spacium">
-    <img src="https://img.shields.io/github/last-commit/irunatbullets/spacium" alt="Last Commit">
-  </a>
+  <a href="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml"><img src="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml/badge.svg" alt="Update image"></a> <a href="https://github.com/irunatbullets/spacium"><img src="https://img.shields.io/github/last-commit/irunatbullets/spacium" alt="Last Commit"></a>
 </p>
 
 This custom **Bazzite** image is based on `bazzite-gnome` with variants for the Nvidia open driver as well as Nouveau.
