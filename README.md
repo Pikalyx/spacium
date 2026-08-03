@@ -23,7 +23,7 @@ Feel free to suggest additional software - or just fork this repo and do
 whatever you like.
 
 To switch, run one of the following commands from a terminal in any Universal
-Blue or Fedora Atomic based install. 
+Blue or Fedora Atomic based install.
 
 Choose from the following based on your gpu needs (amd, nvidia, or legacy nvidia):
 
@@ -41,9 +41,7 @@ sudo bootc switch ghcr.io/irunatbullets/spacium-nouveau
 
 **Important Note:** After switching to this image the login will backup any
 existing niri configutation and replace it with standard dms niri configs.
-Updates will not retrigger this event. It will also automatically popup a
-terminal to configure `dms greeter sync` (see below for manual instructions
-if needed).
+Updates will not retrigger this event.
 
 ## What my selection of additional applications achieve
 
@@ -60,6 +58,8 @@ following from your terminal and follow the steps:
 ```
 dms greeter sync
 ```
+I would like to automate this in future but I'm simply not smart or patient
+enough to do it at the moment.
 
 ### Matugen isn't themeing my flatpak apps!
 
@@ -95,3 +95,4 @@ ujust add-user-to-input-group
 This project is NOT affiliated with Bazzite, DankLinux, Niri or Tsuburaya.
 
 The software is developed independently and provided as-is, without warranties of any kind. Use at your own risk.
+
