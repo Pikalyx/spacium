@@ -25,5 +25,5 @@ cp -r /etc/skel/.config/niri \
 
 touch "$STAMP"
 
-DMS_PRIVESC=sudo dms greeter sync -ty
+DMS_PRIVESC=sudo /usr/bin/dms greeter sync -y
 
