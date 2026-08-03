@@ -41,7 +41,9 @@ sudo bootc switch ghcr.io/irunatbullets/spacium-nouveau
 
 **Important Note:** After switching to this image the login will backup any
 existing niri configutation and replace it with standard dms niri configs.
-Updates will not retrigger this event.
+Updates will not retrigger this event. It will also automatically popup a
+terminal to configure `dms greeter sync` (see below for manual instructions
+if needed).
 
 ## What my selection of additional applications achieve
 
@@ -58,8 +60,6 @@ following from your terminal and follow the steps:
 ```
 dms greeter sync
 ```
-I would like to automate this in future but I'm simply not smart or patient
-enough to do it at the moment.
 
 ### Matugen isn't themeing my flatpak apps!
 
