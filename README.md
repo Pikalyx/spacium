@@ -28,15 +28,15 @@ Blue or Fedora Atomic based install.
 Choose from the following based on your gpu needs (amd, nvidia, or legacy nvidia):
 
 ```
-sudo bootc switch ghcr.io/irunatbullets/spacium
+sudo bootc switch ghcr.io/pikalyx/spacium
 ```
 
 ```
-sudo bootc switch ghcr.io/irunatbullets/spacium-nvidia
+sudo bootc switch ghcr.io/pikalyx/spacium-nvidia
 ```
 
 ```
-sudo bootc switch ghcr.io/irunatbullets/spacium-nouveau
+sudo bootc switch ghcr.io/pikalyx/spacium-nouveau
 ```
 
 **Important Note:** After switching to this image the login will backup any
