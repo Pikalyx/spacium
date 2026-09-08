@@ -29,6 +29,7 @@ dnf5 -y install \
     dms-greeter \
     greetd \
     ghostty \
+    kde-connect \
     material-symbols-fonts \
     matugen \
     niri \
