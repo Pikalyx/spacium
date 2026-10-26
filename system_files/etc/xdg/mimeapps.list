@@ -1,0 +1,3 @@
+[Default Applications]
+inode/directory=dev.duxlabs.files.desktop
+x-scheme-handler/file=dev.duxlabs.files.desktop
