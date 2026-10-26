@@ -15,6 +15,7 @@ IMAGE_REF="ostree-image-signed:docker://ghcr.io/irunatbullets/${FULL_NAME}"
 dnf5 -y copr enable irunatbullets/spacium-extras
 dnf5 -y copr enable avengemedia/dms
 dnf5 -y copr enable avengemedia/danklinux
+dnf5 -y copr enable duxlabs/dux
 
 dnf5 -y install \
     acl \
@@ -27,6 +28,7 @@ dnf5 -y install \
     dgop \
     dms \
     dms-greeter \
+    dux-files \
     greetd \
     ghostty \
     kde-connect \
@@ -45,6 +47,7 @@ dnf5 -y install \
 dnf5 -y copr disable irunatbullets/spacium-extras
 dnf5 -y copr disable avengemedia/dms
 dnf5 -y copr disable avengemedia/danklinux
+dnf5 -y copr disable duxlabs/dux
 
 systemctl enable podman.socket
 
