@@ -47,6 +47,7 @@ Updates will not retrigger this event.
 
 - **ghostty** - nothing, I just switched to it when I started using dms.
 - **bluetui** - an application for configuring multiple Bluetooth receivers.
+- **Dux Files** - a file manager provided by Dux Labs, replacing Nautilus by default
 
 ## Known issues and workarounds
 
