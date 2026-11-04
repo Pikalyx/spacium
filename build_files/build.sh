@@ -13,8 +13,8 @@ fi
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/irunatbullets/${FULL_NAME}"
 
 dnf5 -y copr enable irunatbullets/spacium-extras
-dnf5 -y copr enable duxlabs/dux-repo
-dnf5 -y copr enable duxlabs/dms
+dnf5 -y copr enable avengemedia/dms
+dnf5 -y copr enable avengemedia/danklinux
 
 dnf5 -y install \
     acl \
@@ -44,8 +44,8 @@ dnf5 -y install \
     xwayland-satellite
 
 dnf5 -y copr disable irunatbullets/spacium-extras
-dnf5 -y copr disable duxlabs/dux-repo
-dnf5 -y copr disable duxlabs/dms
+dnf5 -y copr disable avengemedia/dms
+dnf5 -y copr disable avengemedia/danklinux
 
 systemctl enable podman.socket
 
