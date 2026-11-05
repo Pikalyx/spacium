@@ -29,6 +29,7 @@ dnf5 -y install \
     dms-greeter \
     dux-files \
     greetd \
+    gnome-keyring\
     ghostty \
     kde-connect \
     material-symbols-fonts \
