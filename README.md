@@ -7,12 +7,13 @@
 # Spacium
 
 <p>
-  <a href="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml"><img src="https://github.com/irunatbullets/spacium/actions/workflows/update-image.yml/badge.svg" alt="Update image"></a> <a href="https://github.com/irunatbullets/spacium"><img src="https://img.shields.io/github/last-commit/irunatbullets/spacium" alt="Last Commit"></a>
+  <a href="https://github.com/pikalyx/spacium/actions/workflows/update-image.yml"><img src="https://github.com/pikalyx/spacium/actions/workflows/update-image.yml/badge.svg" alt="Update image"></a> 
+  <a href="https://github.com/pikalyx/spacium"><img src="https://img.shields.io/github/last-commit/pikalyx/spacium" alt="Last Commit"></a>
 </p>
 
 This custom **Bazzite** image is based on `bazzite-gnome` with variants for the Nvidia open driver as well as Nouveau.
 
-It includes **Dank Material Shell** and **niri**
+It includes **Dux Modular Shell** and **Niri**
 along with all of the recommended extras for Dank Linux.
 
 My goal with this image is to offer a vanilla DMS/niri experience with gaming
@@ -91,7 +92,7 @@ ujust add-user-to-input-group
 - https://github.com/bazzirco/bazzirco (for the dms-greeter workaround)
 - https://tsuburaya-prod.com/ (for Ultraman, the inspiration behind the name of this image)
 - https://zone108.main.jp/s/jp-005gontakana.php<br>FZゴンタかな is licensed under the [SIL Open Font License, Version 1.1](https://github.com/irunatbullets/spacium/blob/5ce3fb4974ead6809fc2b79f841c56f48572e577/assets/licenses/FZ%E3%82%B3%E3%82%99%E3%83%B3%E3%82%BF%E3%81%8B%E3%81%AA-OFL-1.1.md).
-- https://github.com/irunatbullets/spacium
+- https://github.com/irunatbullets/spacium<br>The original repository I forked for my custom image, huge thanks to the work already done.
 
 ## Legal Notice
 
