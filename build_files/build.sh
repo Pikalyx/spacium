@@ -17,9 +17,7 @@ dnf5 -y copr enable duxlabs/dms
 dnf5 -y copr enable duxlabs/dux-repo
 
 dnf5 -y install \
-    acl \
     bluetui \
-    breakpad \
     cliphist \
     cava \
     dankcalendar-git \
@@ -36,12 +34,8 @@ dnf5 -y install \
     matugen \
     niri \
     qt6-qt5compat \
-    qt6-qtimageformats \
     qt6-qtmultimedia \
-    qt6-qtsvg \
     quickshell-git \
-    tmux \
-    wl-clipboard \
     xwayland-satellite
 
 dnf5 -y copr disable irunatbullets/spacium-extras
