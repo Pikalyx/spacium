@@ -13,13 +13,11 @@ fi
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/irunatbullets/${FULL_NAME}"
 
 dnf5 -y copr enable irunatbullets/spacium-extras
-dnf5 -y copr enable avengemedia/dms
-dnf5 -y copr enable avengemedia/danklinux
+dnf5 -y copr enable duxlabs/dms
+dnf5 -y copr enable duxlabs/dux-repo
 
 dnf5 -y install \
-    acl \
     bluetui \
-    breakpad \
     cliphist \
     cava \
     dankcalendar-git \
@@ -29,23 +27,20 @@ dnf5 -y install \
     dms-greeter \
     dux-files \
     greetd \
+    gnome-keyring\
     ghostty \
     kde-connect \
     material-symbols-fonts \
     matugen \
     niri \
     qt6-qt5compat \
-    qt6-qtimageformats \
     qt6-qtmultimedia \
-    qt6-qtsvg \
     quickshell-git \
-    tmux \
-    wl-clipboard \
     xwayland-satellite
 
 dnf5 -y copr disable irunatbullets/spacium-extras
-dnf5 -y copr disable avengemedia/dms
-dnf5 -y copr disable avengemedia/danklinux
+dnf5 -y copr disable duxlabs/dms
+dnf5 -y copr disable duxlabs/dux-repo
 
 systemctl enable podman.socket
 
