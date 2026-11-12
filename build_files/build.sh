@@ -28,7 +28,6 @@ dnf5 -y install \
     dux-files \
     greetd \
     gnome-keyring\
-    gnome-keyring-pam\
     ghostty \
     kde-connect \
     material-symbols-fonts \
